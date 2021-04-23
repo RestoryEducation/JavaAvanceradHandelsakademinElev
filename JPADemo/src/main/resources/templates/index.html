@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Welcome</h1>
+<img src="fullstack.jpg">
+
+<form th:action="@{/pagetwo}" method="GET">
+    <input type="submit" value="Gå till sida 2">
+</form>
+
+<form th:action="@{/saveUser}" th:object="${user}" method="GET">
+    <input type="text" placeholder="Förnamn" th:field="*{firstname}"><br>
+    <input type="text" placeholder="Efternamn" th:field="*{lastname}"><br>
+    <input type="submit" value="Lägg till användare">
+</form>
+
+<div th:each="user: ${users}">
+    <p th:text="${user.firstname}" />
+    <p th:text="${user.lastname}" />
+</div>
+
+
+</body>
+</html>
