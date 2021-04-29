@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form th:action="@{/saveJob}" th:object="${job}" method="GET">
+<form th:action="@{/saveJob}" th:object="${job}" method="POST">
     <input type="text" placeholder="Beskrivning" th:field="*{description}"><br>
     <input type="submit" value="Registrera jobb">
 </form>

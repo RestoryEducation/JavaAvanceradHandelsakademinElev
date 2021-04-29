@@ -7,10 +7,14 @@
 </head>
 <body>
 
-<form th:action="@{/saveUser}" th:object="${user}" method="GET">
+<form th:action="@{/saveUser}" th:object="${user}" method="POST">
     <input type="text" placeholder="Användare" th:field="*{name}"><br>
     <input type="submit" value="Registrera dig">
 </form>
+
+<div th:each="user:${users}">
+    <p th:text="${user.name}"></p>
+</div>
 
 </body>
 </html>
