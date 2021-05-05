@@ -7,14 +7,30 @@
 </head>
 <body>
 
+
 <form th:action="@{/saveUser}" th:object="${user}" method="POST">
     <input type="text" placeholder="Användare" th:field="*{name}"><br>
+    <input type="text" placeholder="Adress" th:field="*{address}"><br>
+    <input type="text" placeholder="Lösenord" th:name ="passwordOne" th:field="*{password}"><br>
+    <input type="text" placeholder="Bekräfta lösenord" th:name ="passwordTwo"><br>
     <input type="submit" value="Registrera dig">
 </form>
 
+<!---
+<form th:action="@{/saveUserParam}" method="POST">
+    <input type="text" placeholder="Användare" th:name="name"><br>
+    <input type="text" placeholder="Adress" th:name="address"><br>
+    <input type="text" placeholder="Lösenord" th:name="passwordOne"><br>
+    <input type="text" placeholder="Bekräfta lösenord" th:name="passwordTwo"><br>
+    <input type="submit" value="Registrera dig">
+</form>-->
+
+<p th:text="${msg}"></p>
+
+<!---
 <div th:each="user:${users}">
     <p th:text="${user.name}"></p>
-</div>
+</div>-->
 
 </body>
 </html>
