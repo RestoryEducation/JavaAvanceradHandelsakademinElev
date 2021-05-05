@@ -78,8 +78,8 @@ public class UserController {
     /******************************NYA METODEN****************************************/
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user,
-                            @RequestParam("passwordOne") String passwordOne,
+    public String saveUser(User user,
+                            @RequestParam("password") String passwordOne,
                             @RequestParam("passwordTwo") String passwordTwo){
 
         if(passwordOne.equals(passwordTwo)){
