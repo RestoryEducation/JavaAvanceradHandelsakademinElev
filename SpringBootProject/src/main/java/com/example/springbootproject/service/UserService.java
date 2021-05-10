@@ -44,6 +44,20 @@ public class UserService {
 
     }
 
+    //Used to update fields of a given database entry
+    public void updateUser(User user){
+        //User is queried from the database by using its id field => user.getId();
+        User userDB = userRepository.findById(user.getId()).orElseThrow();
+        //Object returned from database is updated
+            //name field updated
+        userDB.setName(user.getName());
+            //address field updated
+        userDB.setAddress(user.getAddress());
+        //Notice that the object which was queried from database and
+        //subsequently updated is the one that is saved.
+        userRepository.save(userDB);
+    }
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
@@ -117,5 +131,16 @@ public class UserService {
         }
         String passwordToCompare = createSecureHashPass(password, convertStringToByteForDB(dbUser.getSalt()));
         return dbUser.getPassword().equals(passwordToCompare);
+    }
+
+    //Returns a User type object to Controller based on
+    //its id field
+    public User findUserById(long id) {
+        return userRepository.findById(id).orElseThrow();
+    }
+    //Deletes a User type object based on
+    //its id field
+    public void deleteUser(long id) {
+        userRepository.deleteById(id);
     }
 }

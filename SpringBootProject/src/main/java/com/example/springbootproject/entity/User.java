@@ -14,6 +14,7 @@ public class User {
     private String name;
     private String address;
     private String password;
+    //salt field created for saving and querying the database
     private String salt;
 
     public User() {
