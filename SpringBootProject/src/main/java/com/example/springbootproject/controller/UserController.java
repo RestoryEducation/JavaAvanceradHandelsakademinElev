@@ -5,10 +5,7 @@ import com.example.springbootproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -89,6 +86,36 @@ public class UserController {
 
         return "redirect:/failed";
 
+    }
+
+    //@RestController
+//    @PostMapping("/user/auth")
+//    @ResponseBody
+//    public boolean authUser(@RequestBody User user){
+//        return userService.authUser(user);
+//    }
+
+    @GetMapping("/login")
+    public String loginView(@ModelAttribute("user") User user){
+       return "login";
+    }
+    @PostMapping("/authenticate-user")
+    public String authUser(@RequestParam String name, @RequestParam String password){
+        if(userService.authUser(name, password)){
+            return "redirect:/authenticated";
+        }
+        return "redirect:/authError";
+    }
+
+    @GetMapping("/authenticated")
+    public String authenticated(Model model){
+        model.addAttribute("msg", "You Are Logged In");
+        return "login";
+    }
+    @GetMapping("/authError")
+    public String authError(Model model){
+        model.addAttribute("msg", "Login Failed");
+        return "login";
     }
 
 }
