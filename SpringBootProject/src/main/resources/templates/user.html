@@ -7,14 +7,36 @@
 </head>
 <body>
 
-
 <form th:action="@{/saveUser}" th:object="${user}" method="POST">
     <input type="text" placeholder="Användare" th:field="*{name}">
-    <input type="text" placeholder="Adress" th:field="*{address}">
     <input type="text" placeholder="Lösenord" th:field="*{password}">
     <input type="text" placeholder="Bekräfta lösenord" th:name="passwordTwo">
+
+    <!--Lägga till två fält till som går till superklassens klass-->
+    <input type="text" placeholder="Adress" th:field="*{address}">
+    <input type="text" placeholder="Förnamn" th:field="*{firstname}">
+    <input type="text" placeholder="Efternamn" th:field="*{lastname}">
     <input type="submit" value="Registrera dig">
 </form>
+
+<!--Skapa ett formulär som loggar in användaren--->
+
+<form th:action="@{/loginUser}" method="POST">
+    <input type="text" placeholder="Användare" th:name="name">
+    <input type="text" placeholder="Lösenord" th:name="password">
+    <input type="submit" value="Logga in">
+</form>
+
+
+
+
+
+
+
+
+
+
+
 
 <!---
 <form th:action="@{/saveUserParam}" method="POST">

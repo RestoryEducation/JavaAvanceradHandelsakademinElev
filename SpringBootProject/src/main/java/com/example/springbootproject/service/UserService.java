@@ -20,4 +20,12 @@ public class UserService {
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
+
+    public User getUserByName(String name){
+        return userRepository.findByName(name);
+    }
+
+    public User getUserById(Long id){
+        return userRepository.findById(id).orElseThrow();
+    }
 }
